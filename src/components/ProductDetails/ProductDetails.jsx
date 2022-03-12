@@ -1,5 +1,5 @@
 import { DownOutlined } from '@ant-design/icons'
-import { Divider, Table, Skeleton } from 'antd'
+import { Table, Skeleton } from 'antd'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import style from './ProductDetails.module.css'
@@ -26,7 +26,7 @@ const ProductDetails = (props) => {
 
     useEffect(() => {
         getData()
-    }, [props.url])
+    }, [props.url]) // eslint-disable-line
 
     const column = [
         {

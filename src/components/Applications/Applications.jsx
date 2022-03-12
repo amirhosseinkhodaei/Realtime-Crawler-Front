@@ -7,7 +7,6 @@ import style from './Application.module.css'
 
 const Applications = (props) => {
     const [data, setData] = useState()
-    const baseUrl = 'https://polymer-additives.specialchem.com'
 
     const getApplications = () => {
         axios.get('http://127.0.0.1:9080/crawl.json', {
@@ -22,7 +21,7 @@ const Applications = (props) => {
 
     useEffect(() => {
         getApplications()
-    }, [])
+    }, []) // eslint-disable-line
 
 
     return (

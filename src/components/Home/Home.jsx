@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Layout, Menu, Table, Input, Button } from 'antd';
+import { Layout, Menu, Table, Input, Button, AutoComplete } from 'antd';
 import axios from 'axios';
 import { Loading } from '../Loading/Loading';
 import styles from './Home.module.css'
@@ -11,6 +11,7 @@ import {
 import Applications from '../Applications/Applications';
 import { JsonToExcel } from "react-json-to-excel";
 import ProductDetails from '../ProductDetails/ProductDetails';
+import suggest from './suggestions.json'
 
 
 const Home = () => {
@@ -26,7 +27,7 @@ const Home = () => {
     const [showDetail, setShowDetail] = useState(false)
     const [productUrl, setProductUrl] = useState()
 
-
+    const [suggestion, setSuggestion] = useState(suggest);
     const columns = [
         {
             title: 'Product Name',
@@ -67,7 +68,7 @@ const Home = () => {
     useEffect(() => {
         setIsLoading(true)
         getData()
-    }, [pageSize, application])
+    }, [pageSize, application]) // eslint-disable-line
 
 
 
@@ -99,16 +100,29 @@ const Home = () => {
             <Loading isLoading={isLoading}>
                 <Content style={{ padding: '30px 50px' }}>
                     <div className={styles.SearchContainer}>
-                        <Search
-                            placeholder="Please Enter a Keyword"
-                            enterButton
-                            style={{ width: '60%' }}
-                            onChange={(e) => {
-                                setKeyword(e.target.value)
-                            }}
-                            onPressEnter={(e) => {
-                                getData()
-                            }} />
+                        <AutoComplete
+                            filterOption={(inputValue, option) =>
+                                option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                            } style={{ width: '60%' }}
+                            options={suggestion}
+                            >
+                            <Search
+                                placeholder="Please Enter a Keyword"
+                                enterButton
+                                allowClear
+                                onChange={(e) => {
+                                    setKeyword(e.target.value)
+                                }}
+                                onPressEnter={() => {
+                                    getData()
+                                }}
+                                onSearch={() => {
+                                    getData()
+                                }}
+                            />
+                        </AutoComplete>
+
+
                         <div className={styles.ClearApplications}>
                             {
                                 application ? (
