@@ -1,0 +1,44 @@
+.SearchContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.ClearApplications{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ButtonExcel{
+    line-height: 1.5715 !important;
+    position: relative !important;
+    display: inline-block !important;
+    font-weight: 400 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    background-image: none !important;
+    box-shadow: 0 2px 0 rgb(0 0 0 / 2%) !important;
+    cursor: pointer !important;
+    transition: all .3s cubic-bezier(.645,.045,.355,1) !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    touch-action: manipulation !important;
+    height: 32px !important;
+    padding: 4px 15px !important;
+    font-size: 14px !important;
+    border-radius: 2px !important;
+    color: rgba(0,0,0,.85) !important;
+    border: 1px solid #d9d9d9 !important;
+    background: #fff !important;
+    margin-left: 15px;
+}
+
+.ButtonExcel:hover{
+    color: #40a9ff !important;
+    border-color: #40a9ff !important;
+    background: #fff !important;
+}
