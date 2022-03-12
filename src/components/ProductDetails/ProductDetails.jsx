@@ -41,16 +41,6 @@ const ProductDetails = (props) => {
         }
     ]
 
-    // const column = Object.entries(data?.attributes || []).map(val => {
-    //     return (
-    //         {
-    //             title: val[0],
-    //             dataIndex: val[0],
-    //             key: val[0],
-    //         }
-    //     );
-    // })
-
     const dataSource = Object.entries(data?.attributes || {}).map(val => {
         return {
             attributes: val[0],
@@ -76,7 +66,7 @@ const ProductDetails = (props) => {
             <div className={style.DetailContainer}>
 
                 <div style={{ marginTop: '20px' }}>
-                    <Skeleton paragraph={{ rows: 0 }} loading={loading}>
+                    <Skeleton active paragraph={{ rows: 0 }} loading={loading}>
                         <h3>
                             {data?.products[0]?.productName}
                         </h3>
@@ -84,11 +74,11 @@ const ProductDetails = (props) => {
                 </div>
 
                 <div style={{ marginTop: '20px' }}>
-                    <Skeleton loading={loading}>
+                    <Skeleton active loading={loading}>
                         <p>{data?.products[0]?.description}</p>
                     </Skeleton>
                 </div>
-                <Skeleton loading={loading}>
+                <Skeleton active loading={loading}>
                     <div>
                         <Table columns={column} dataSource={dataSource} />
                     </div>

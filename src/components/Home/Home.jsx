@@ -105,6 +105,7 @@ const Home = () => {
                                 option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                             } style={{ width: '60%' }}
                             options={suggestion}
+                            open={keyword.length > 3 ? true : false}
                             >
                             <Search
                                 placeholder="Please Enter a Keyword"
